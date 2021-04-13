@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Ruokalista</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Ruokalista</h1>
+	<table>
+		<tr>
+			<th>Nimi</th>
+			<th>Kuvaus</th>
+			<th>Hinta</th>
+			<th>Linkki</th>
+		</tr>
+		<tr th:each = "food:${foods}">
+			<td th:text="${food.name}"></td>
+			<td th:text="${food.description}"></td>
+			<td th:text="${food.price}"></td>
+			<td th:text="${food.link}"></td>
+		</tr>
+	</table>
+	<a href="/add">Lisää ruoka</a>
+</body>
+</html>
