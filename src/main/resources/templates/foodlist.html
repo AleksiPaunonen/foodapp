@@ -1,25 +1,32 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 <head>
 	<title>Ruokalista</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<h1>Ruokalista</h1>
-	<table>
+	<table class="table table-striped">
 		<tr>
 			<th>Nimi</th>
 			<th>Kuvaus</th>
-			<th>Hinta</th>
-			<th>Linkki</th>
+			<th>Aika</th>
+			<th>Kategoria</th>
+			<th>Resepti</th>
+			
 		</tr>
 		<tr th:each = "food:${foods}">
 			<td th:text="${food.name}"></td>
 			<td th:text="${food.description}"></td>
-			<td th:text="${food.price}"></td>
+			<td th:text="${food.time}"></td>
+			<td th:text="${food.category.name}"></td>
 			<td th:text="${food.link}"></td>
+			
+			<td><a th:href="@{/poista/{id}(id=${food.id})}">Poista</a></td>
+			<td><a th:href="@{/muokkaa/{id}(id=${food.id})}">Muokkaa</a></td>
 		</tr>
 	</table>
-	<a href="/add">Lisää ruoka</a>
+	<a href="/uusiruoka" class="btn btn-success">Lisää ruoka</a>
 </body>
 </html>

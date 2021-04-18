@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<head>
+    <title>Lisää ruoka</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Lisää ruoka</h1>
+	<div>
+		<form th:object="${food}" th:action="@{tallenna}" action="#" method="post">
+		  	<label for="name">Nimi</label>
+			<input type="text" id="name" th:field="*{name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="description">Kuvaus</label>
+			<input type="text" id="description" th:field="*{description}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="time">Aika</label>
+			<input type="text" th:field="*{time}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="link">Resepti</label>
+			<input type="text" id="link" th:field="*{link}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="categorylist">Kategoria</label>
+			 <select id="categorylist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+    		</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

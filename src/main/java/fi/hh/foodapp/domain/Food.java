@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Food {
 
@@ -17,10 +19,12 @@ public class Food {
 
 	private String name;
 	private String description;
-	private double price;
+	private String time;
 	private String link;
 	
 	@ManyToOne
+	// @JsonIgnoreProperties
+	@JsonIgnoreProperties ("foods")
 	@JoinColumn(name = "categoryid")
 	private Category category; 
 	
@@ -30,11 +34,11 @@ public class Food {
 	}
 
 	// parametrillinen konstruktori
-	public Food(String name, String description, double price, String link, Category category) {
+	public Food(String name, String description, String time, String link, Category category) {
 		super();
 		this.name = name;
 		this.description = description;
-		this.price = price;
+		this.time = time;
 		this.link = link;
 		this.category = category;
 	}
@@ -64,12 +68,12 @@ public class Food {
 		this.description = description;
 	}
 
-	public double getPrice() {
-		return price;
+	public String getTime() {
+		return time;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 	public String getLink() {
@@ -91,7 +95,7 @@ public class Food {
 	// toString-metodi
 	@Override
 	public String toString() {
-		return "Food [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", link="
+		return "Food [id=" + id + ", name=" + name + ", description=" + description + ", time=" + time + ", link="
 				+ link + ", category=" + category + "]";
 	}
 

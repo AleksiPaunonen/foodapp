@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Muokkaa ruokaa</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{../css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+	<h1>Muokkaa ruokaa</h1>
+	<div>
+		<form th:object="${food}" th:action="@{../tallenna}" action="#" method="post">
+			<input type="hidden" th:field="*{id}" class="form-control"/>
+			<input type="text" th:field="*{name}" class="form-control"
+				placeholder="Nimi" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="text" th:field="*{description}" class="form-control"
+				placeholder="Kuvaus" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="text" th:field="*{time}" class="form-control"
+				placeholder="Aika" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="text" th:field="*{link}" class="form-control"
+				placeholder="Resepti" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="categorylist">Kategoria</label>
+			 <select id="categorylist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+    		</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<hr>
+			<input type="submit" class="btn btn-primary" value="Save"></input>
+		</form>
+	</div>
+</div>
+</body>
+</html>
