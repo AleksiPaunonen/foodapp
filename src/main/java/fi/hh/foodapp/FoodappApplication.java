@@ -53,7 +53,7 @@ public class FoodappApplication {
 			Category category3 = new Category("Kasvisruoka");
 			crepository.save(category3);
 			
-			frepository.save(new Food("Lihapullat ja muusi", "Naudan 17% jauhelihaa ja perunamuusia", "45min", "Tulossa", category1));
+			frepository.save(new Food("Lihapullat ja muusi", "Naudan jauhelihaa ja perunamuusia", "45min", "Tulossa", category1));
 			frepository.save(new Food("Itämainen kanakeitto", "Kanaa, bataattia, paprikaa ja porkkanaa", "40min", "Tulossa", category2));
 			frepository.save(new Food("Sienirisotto", "Satokauden sieniä", "35min", "Tulossa", category3));
 			
