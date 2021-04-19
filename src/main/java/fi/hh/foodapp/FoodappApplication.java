@@ -42,11 +42,21 @@ public class FoodappApplication {
 	@Bean
 	public CommandLineRunner foodDemo(FoodRepository frepository, CategoryRepository crepository) {
 		return (args) -> {
-			log.info("saving couple of foods");
+			log.info("saving couple of foods and categories");
+			
 			Category category1 = new Category("Liharuoka");
 			crepository.save(category1);
 			
-			frepository.save(new Food("Makaronilaatikko", "Jauhelihaa ja makaronia", "1h", "Tulossa", category1));
+			Category category2 = new Category("Keittoruoka");
+			crepository.save(category2);
+			
+			Category category3 = new Category("Kasvisruoka");
+			crepository.save(category3);
+			
+			frepository.save(new Food("Lihapullat ja muusi", "Naudan 17% jauhelihaa ja perunamuusia", "45min", "Tulossa", category1));
+			frepository.save(new Food("Itämainen kanakeitto", "Kanaa, bataattia, paprikaa ja porkkanaa", "40min", "Tulossa", category2));
+			frepository.save(new Food("Sienirisotto", "Satokauden sieniä", "35min", "Tulossa", category3));
+			
 			
 			log.info("fetch all foods");
 			for (Food food : frepository.findAll()) {
