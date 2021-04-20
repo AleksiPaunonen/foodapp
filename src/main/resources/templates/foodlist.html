@@ -1,49 +1,50 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-	<title>Ruokalista</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link type="text/css" rel="stylesheet"
+<title>Ruokalista</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet"
 	th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
-<div class="container">
-	<div class="col-md-4">
-		<h1>Ruokalista</h1>
-	</div>
-	<div class="col-md-4">
-		<h3 th:inline="text">Tervetuloa</h3>
-	</div>
-	<div class="col-md-4" style="padding:20px 0">
-	</div>
-	
-	
-	<div style="padding:0 20px">		
-	<table class="table table-striped">
-		<tr>
-			<th>Nimi</th>
-			<th>Kuvaus</th>
-			<th>Aika</th>
-			<th>Kategoria</th>
-			<th>Resepti</th>
-			<th>Toiminnot</th>
+	<div class="container">
+		<div class="col-md-4">
+			<h1>Ruokalista</h1>
+		</div>
+		<div class="col-md-4">
+			<h3 th:inline="text">Tervetuloa</h3>
+		</div>
+		<div class="col-md-4" style="padding: 20px 0">
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Kirjaudu ulos" class="btn-sm btn-danger" />
+			</form>
+		</div>
 
-		</tr>
-		<tr th:each="food:${foods}">
-			<td th:text="${food.name}"></td>
-			<td th:text="${food.description}"></td>
-			<td th:text="${food.time}"></td>
-			<td th:text="${food.category.name}"></td>
-			<td th:text="${food.link}"></td>
+		<table class="table table-striped">
+			<tr>
+				<th>Nimi</th>
+				<th>Kuvaus</th>
+				<th>Aika</th>
+				<th>Kategoria</th>
+				<th>Resepti</th>
+				<th sec:authorize="hasRole('ADMIN')">Toiminnot</th>
 
-			<td>
-				<a th:href="@{/poista/{id}(id=${food.id})}" class="btn btn-danger btn-sm">Poista</a>
-				<a th:href="@{/muokkaa/{id}(id=${food.id})}" class="btn btn-primary btn-sm">Muokkaa</a>
-			</td>
-		</tr>
-	</table>
-	<a href="/uusiruoka" class="btn btn-primary">Lisää ruoka</a>
+			</tr>
+			<tr th:each="food:${foods}">
+				<td th:text="${food.name}"></td>
+				<td th:text="${food.description}"></td>
+				<td th:text="${food.time}"></td>
+				<td th:text="${food.category.name}"></td>
+				<td th:text="${food.link}"></td>
+
+				<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/poista/{id}(id=${food.id})}"
+					class="btn btn-danger btn-sm">Poista</a> <a
+					
+					th:href="@{/muokkaa/{id}(id=${food.id})}"
+					class="btn btn-primary btn-sm">Muokkaa</a></td>
+			</tr>
+		</table>
+		<a sec:authorize="hasRole('ADMIN')" href="/uusiruoka" class="btn btn-primary">Lisää ruoka</a>
 	</div>
 	</div>
 </body>
