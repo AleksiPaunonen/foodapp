@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <title>Ruokalista</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -37,14 +38,15 @@
 				<td th:text="${food.category.name}"></td>
 				<td th:text="${food.link}"></td>
 
-				<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/poista/{id}(id=${food.id})}"
+				<td sec:authorize="hasRole('ADMIN')"><a
+					th:href="@{/poista/{id}(id=${food.id})}"
 					class="btn btn-danger btn-sm">Poista</a> <a
-					
 					th:href="@{/muokkaa/{id}(id=${food.id})}"
 					class="btn btn-primary btn-sm">Muokkaa</a></td>
 			</tr>
 		</table>
-		<a sec:authorize="hasRole('ADMIN')" href="/uusiruoka" class="btn btn-primary">Lisää ruoka</a>
+		<a sec:authorize="hasRole('ADMIN')" href="/uusiruoka"
+			class="btn btn-primary">Lisää ruoka</a>
 	</div>
 	</div>
 </body>
