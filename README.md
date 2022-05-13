@@ -1,1 +1,1 @@
-Server Programming school project 
+## Server Programming project with Spring Boot REST API
