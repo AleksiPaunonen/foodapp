@@ -1,1 +1,1 @@
-## Server Programming project with Spring Boot REST API
+## Server Programming project - Spring Boot REST API - CRUD functionality
